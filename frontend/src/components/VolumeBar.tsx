@@ -43,7 +43,7 @@ export default function VolumeBar({ volume, setVolume }: {
         id="volume"
         name="volume"
         aria-label="Volume"
-        min={0}
+        min={1}
         max={BAR_COUNT}
         value={volume}
         onChange={(e) => setVolume(e.target.valueAsNumber)}
