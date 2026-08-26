@@ -1,10 +1,10 @@
 ---
-import Player from "@/components/Player";
-import Layout from "@/layouts/Layout.astro";
+import RadioSelector from "@/components/RadioSelector";
+import Root from "@/layouts/Root.astro";
 ---
 
-<Layout>
-  <div>
-    <Player client:load />
+<Root>
+  <div class="flex justify-center items-center">
+    <RadioSelector client:load />
   </div>
-</Layout>
+</Root>

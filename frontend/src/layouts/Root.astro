@@ -2,22 +2,23 @@
 import "../styles/global.css";
 import { Font } from "astro:assets";
 import SiteHeader from "@/components/SiteHeader";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <html lang="en">
   <head>
     <Font cssVariable="--font-science-gothic" />
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/assets/favicon.webp" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
+    <ClientRouter />
   </head>
-  <body
-    class="text-foreground bg-background font-gothic lg:mx-[20%] md:mx-[15%]"
-  >
+  <body class="text-foreground bg-background font-gothic">
     <SiteHeader />
-    <slot />
+    <main>
+      <slot />
+    </main>
   </body>
 </html>
