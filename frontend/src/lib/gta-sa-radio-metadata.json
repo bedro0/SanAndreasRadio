@@ -2,7 +2,7 @@
   "bouncefm": {
     "Identity": {
       "alias": "bouncefm",
-      "channel_name": "Bounce FM",
+      "station_name": "Bounce FM",
       "folder": "Bounce FM",
       "genre": "Funk, Disco, Soul, R&B",
       "location": "East Los Santos",
@@ -864,7 +864,7 @@
   "csr": {
     "Identity": {
       "alias": "csr",
-      "channel_name": "CSR 103.9",
+      "station_name": "CSR 103.9",
       "folder": "CSR",
       "genre": "New Jack Swing, '90s Soul, '90s Pop",
       "location": "San Fierro",
@@ -1470,7 +1470,7 @@
   "kdst": {
     "Identity": {
       "alias": "kdst",
-      "channel_name": "K-DST",
+      "station_name": "K-DST",
       "folder": "K-DST",
       "genre": "Classic Rock",
       "location": "Los Santos",
@@ -2238,7 +2238,7 @@
   "kjah": {
     "Identity": {
       "alias": "kjah",
-      "channel_name": "K-JAH West",
+      "station_name": "K-JAH West",
       "folder": "K-JAH",
       "genre": "Reggae, Dub, Dancehall",
       "location": "Las Venturas",
@@ -3020,7 +3020,7 @@
   "krose": {
     "Identity": {
       "alias": "krose",
-      "channel_name": "K-Rose",
+      "station_name": "K-Rose",
       "folder": "KROSE",
       "genre": "Country",
       "location": "Bone County",
@@ -3772,7 +3772,7 @@
   "mastersounds": {
     "Identity": {
       "alias": "mastersounds",
-      "channel_name": "Master Sounds 98.3",
+      "station_name": "Master Sounds 98.3",
       "folder": "Master Sounds",
       "genre": "Groove, Classic Funk, Classic Soul",
       "location": "Blackfield, Las Venturas",
@@ -4538,7 +4538,7 @@
   "playbackfm": {
     "Identity": {
       "alias": "playbackfm",
-      "channel_name": "Playback FM",
+      "station_name": "Playback FM",
       "folder": "Playback FM",
       "genre": "Classic East Coast Hip-Hop",
       "location": "San Fierro",
@@ -5174,7 +5174,7 @@
   "radiols": {
     "Identity": {
       "alias": "radiols",
-      "channel_name": "Radio Los Santos",
+      "station_name": "Radio Los Santos",
       "folder": "Radio Los Santos",
       "genre": "'90s Hip-Hop",
       "location": "Downtown Lost Santos",
@@ -5888,7 +5888,7 @@
   "radiox": {
     "Identity": {
       "alias": "radiox",
-      "channel_name": "Radio:X",
+      "station_name": "Radio:X",
       "folder": "Radio X",
       "genre": "Alternative Rock, Grunge",
       "location": "Las Venturas",
@@ -6610,7 +6610,7 @@
   "sfur": {
     "Identity": {
       "alias": "sfur",
-      "channel_name": "San Fierro Underground Radio",
+      "station_name": "San Fierro Underground Radio",
       "folder": "SFUR",
       "genre": "House",
       "location": "San Fierro",
@@ -7198,7 +7198,7 @@
   "wctr": {
     "Identity": {
       "alias": "wctr",
-      "channel_name": "West Coast Talk Radio",
+      "station_name": "West Coast Talk Radio",
       "folder": "WCTR",
       "genre": "Talk Radio Station",
       "location": "Missionary Hill, San Fierro",
