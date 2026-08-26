@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 const ACTIVE_COLOR = "#accbf1";
 const PASSIVE_COLOR = "#4a5a6b";
 
@@ -10,12 +12,15 @@ const HEIGHT_STEP = 3;
 const VIEW_W = BAR_COUNT * BAR_WIDTH + (BAR_COUNT - 1) * BAR_GAP;
 const VIEW_H = BASE_HEIGHT + (BAR_COUNT - 1) * HEIGHT_STEP;
 
-export default function VolumeBar({ volume, setVolume }: {
+export default function VolumeBar({ volume, setVolume, className }: {
   volume: number;
   setVolume: (volume: number) => void;
+  className?: string;
 }) {
   return (
-    <div className="relative w-full max-w-[387px] touch-none rounded has-focus-visible:ring-2 has-focus-visible:ring-sky-300">
+    <div className={
+      twMerge("relative w-full max-w-[387px] touch-none rounded has-focus-visible:ring-2 has-focus-visible:ring-sky-300", className)
+    }>
       <svg
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
         preserveAspectRatio="xMidYMid meet"
