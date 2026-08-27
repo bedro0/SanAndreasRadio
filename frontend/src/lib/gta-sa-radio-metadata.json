@@ -1,18 +1,18 @@
 {
   "bouncefm": {
-    "Identity": {
+    "identity": {
       "alias": "bouncefm",
-      "station_name": "Bounce FM",
+      "stationName": "Bounce FM",
       "folder": "Bounce FM",
       "genre": "Funk, Disco, Soul, R&B",
       "location": "East Los Santos",
-      "location_real": "East Los Angeles, California",
+      "locationReal": "East Los Angeles, California",
       "host": "The Funktipus",
       "latitude": "34.03409058551883",
       "longitude": "-118.18109424485043",
-      "logs-color": "cyan"
+      "logsColor": "cyan"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -862,19 +862,19 @@
     }
   },
   "csr": {
-    "Identity": {
+    "identity": {
       "alias": "csr",
-      "station_name": "CSR 103.9",
+      "stationName": "CSR 103.9",
       "folder": "CSR",
       "genre": "New Jack Swing, '90s Soul, '90s Pop",
       "location": "San Fierro",
-      "location_real": "San Francisco, California",
+      "locationReal": "San Francisco, California",
       "host": "Philip 'PM' Michaels",
       "latitude": "37.76049012251422",
       "longitude": "-122.44793153935414",
-      "logs-color": "purple"
+      "logsColor": "purple"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -1468,19 +1468,19 @@
     }
   },
   "kdst": {
-    "Identity": {
+    "identity": {
       "alias": "kdst",
-      "station_name": "K-DST",
+      "stationName": "K-DST",
       "folder": "K-DST",
       "genre": "Classic Rock",
       "location": "Los Santos",
-      "location_real": "Los Angeles, California",
+      "locationReal": "Los Angeles, California",
       "host": "Tommy \"The Nightmare\" Smith",
       "latitude": "34.084670054406786",
       "longitude": "-118.40691502938269",
-      "logs-color": "gold"
+      "logsColor": "gold"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -2236,19 +2236,19 @@
     }
   },
   "kjah": {
-    "Identity": {
+    "identity": {
       "alias": "kjah",
-      "station_name": "K-JAH West",
+      "stationName": "K-JAH West",
       "folder": "K-JAH",
       "genre": "Reggae, Dub, Dancehall",
       "location": "Las Venturas",
-      "location_real": "Paradise, Nevada",
+      "locationReal": "Paradise, Nevada",
       "host": "Marshall Peters, Johnny Lawton",
       "latitude": "36.09449283564147",
       "longitude": "-115.18323950597356",
-      "logs-color": "greenyellow"
+      "logsColor": "greenyellow"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -3018,19 +3018,19 @@
     }
   },
   "krose": {
-    "Identity": {
+    "identity": {
       "alias": "krose",
-      "station_name": "K-Rose",
+      "stationName": "K-Rose",
       "folder": "KROSE",
       "genre": "Country",
       "location": "Bone County",
-      "location_real": "Mojave Desert, Nevada",
+      "locationReal": "Mojave Desert, Nevada",
       "host": "Mary-Beth Maybell",
       "latitude": "35.0329809601477",
       "longitude": "-115.47420033734288",
-      "logs-color": "yellow"
+      "logsColor": "yellow"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -3770,19 +3770,19 @@
     }
   },
   "mastersounds": {
-    "Identity": {
+    "identity": {
       "alias": "mastersounds",
-      "station_name": "Master Sounds 98.3",
+      "stationName": "Master Sounds 98.3",
       "folder": "Master Sounds",
       "genre": "Groove, Classic Funk, Classic Soul",
       "location": "Blackfield, Las Venturas",
-      "location_real": "Paradise, Nevada",
+      "locationReal": "Paradise, Nevada",
       "host": "Johnny \"The Love Giant\" Parkinson",
       "latitude": "36.09449283564147",
       "longitude": "-115.18323950597356",
-      "logs-color": "darkorange"
+      "logsColor": "darkorange"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -4536,19 +4536,19 @@
     }
   },
   "playbackfm": {
-    "Identity": {
+    "identity": {
       "alias": "playbackfm",
-      "station_name": "Playback FM",
+      "stationName": "Playback FM",
       "folder": "Playback FM",
       "genre": "Classic East Coast Hip-Hop",
       "location": "San Fierro",
-      "location_real": "San Francisco, California",
+      "locationReal": "San Francisco, California",
       "host": "Forth Right MC",
       "latitude": "37.76049012251422",
       "longitude": "-122.44793153935414",
-      "logs-color": "darkolivegreen"
+      "logsColor": "darkolivegreen"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -5172,19 +5172,19 @@
     }
   },
   "radiols": {
-    "Identity": {
+    "identity": {
       "alias": "radiols",
-      "station_name": "Radio Los Santos",
+      "stationName": "Radio Los Santos",
       "folder": "Radio Los Santos",
       "genre": "'90s Hip-Hop",
       "location": "Downtown Lost Santos",
-      "location_real": "Downtown Los Angeles, California",
+      "locationReal": "Downtown Los Angeles, California",
       "host": "Julio G",
       "latitude": "34.04250236885846",
       "longitude": "-118.24536664845455",
-      "logs-color": "brown"
+      "logsColor": "brown"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -5886,19 +5886,19 @@
     }
   },
   "radiox": {
-    "Identity": {
+    "identity": {
       "alias": "radiox",
-      "station_name": "Radio:X",
+      "stationName": "Radio:X",
       "folder": "Radio X",
       "genre": "Alternative Rock, Grunge",
       "location": "Las Venturas",
-      "location_real": "Las Vegas, Nevada",
+      "locationReal": "Las Vegas, Nevada",
       "host": "Sage",
       "latitude": "36.17441984107815",
       "longitude": "-115.15532756187191",
-      "logs-color": "cyan"
+      "logsColor": "cyan"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -6608,19 +6608,19 @@
     }
   },
   "sfur": {
-    "Identity": {
+    "identity": {
       "alias": "sfur",
-      "station_name": "San Fierro Underground Radio",
+      "stationName": "San Fierro Underground Radio",
       "folder": "SFUR",
       "genre": "House",
       "location": "San Fierro",
-      "location_real": "San Francisco, California",
+      "locationReal": "San Francisco, California",
       "host": "Hans Oberlander",
       "latitude": "37.76049012251422",
       "longitude": "-122.44793153935414",
-      "logs-color": "navy"
+      "logsColor": "navy"
     },
-    "Content": {
+    "content": {
       "Songs": [
         {
           "intros": [
@@ -7196,19 +7196,19 @@
     }
   },
   "wctr": {
-    "Identity": {
+    "identity": {
       "alias": "wctr",
-      "station_name": "West Coast Talk Radio",
+      "stationName": "West Coast Talk Radio",
       "folder": "WCTR",
       "genre": "Talk Radio Station",
       "location": "Missionary Hill, San Fierro",
-      "location_real": "Sutro Tower, San Francisco, California",
+      "locationReal": "Sutro Tower, San Francisco, California",
       "host": "Ammu-Nation",
       "latitude": "37.75531790034594",
       "longitude": "-122.45272692937759",
-      "logs-color": "plum"
+      "logsColor": "plum"
     },
-    "Content": {
+    "content": {
       "Show": [
         [
           {

@@ -1,0 +1,79 @@
+import Root from "@/layouts/Root.astro"
+import Prose from "@/layouts/Prose.astro"
+
+<Root>
+    <Prose>
+    ## Randomized Dual-Head Queue
+
+    Imagine you have a list, a playlist if you will. Playlist with limited amount of entries in it. How could you make a music player keep playing this playlist for an indefinite amount of time?
+
+    ### Attempt #1 (Naive approach):
+
+    Given an array `playlist = [a, b, c, d]`
+    
+    - Step 1: Add the array to the song queue.
+    - Step 2: When you run out of the elements in the array, go back to Step 1.
+
+    This strategy is suboptimal, since we are trying to avoid repetitive playback.
+
+    ### Attempt #2
+    
+    Lets start with the same array.
+        `playlist = [a, b, c, d]`
+
+    - Step 1: Shuffle the array. `shuffledArray = [b, d, c, a]`
+    - Step 2: Add the array to the song queue.
+    - Step 3: When you run out of the elements, go back to Step 1.
+
+    This is an improvement, but we are going to run into a problem with this approach. Say, we do a multiple passes with this algorithm.
+
+    1. `shuffledArray = [c, a, d, b]`
+    2. `shuffledArray = [b, a, d, c]`
+
+    If we play the Pass #2 output right after Pass #1 output, the song "b" is going to queue twice in a row (`songQueue=[c, a, d, b, b, a, d, c]`). While this is a worst case scenario, this is still a very likely side effect of this algorithm.
+
+    Less worse (but still pretty bad) cases include:
+
+    - `songQueue = [..., b, a, b, ...]`
+    - `songQueue = [..., b, d, a, b, ...]`
+    - `songQueue = [..., b, c, d, a, b, ...]`
+
+    Note: A song being repeated with 3 tracks in between is guaranteed to happen when working with only 4 elements, but as playlist size is scaled up, the probability of a track repeating too soon stays disproportionately high.
+
+    ### Attempt #3 (Randomized Queue)
+
+    Let's start with an array of 6 elements this time. 
+    `playlist = [a, b, c, d, e, f], songQueue = []`
+    Let's pick an element at random from the first two elements of `playlist` array and add it to the songQueue.
+    ```
+    randomSongElement = random.choice(playlist[0], playlist[1]) //randomSongElement="b"
+    songQueue.push(randomSongElement) //songQueue=[b]
+    ```
+    
+    We need one more step to complete a cycle of this algorithm: remove the chosen element from `playlist` array and append it at the end. 
+    
+    ```
+    playlist.remove(randomSongElement) //playlist = [a, c, d, e, f]
+    playlist.push(randomSongElement) //playlist = [a, c, d, e, f, b]
+    ```
+    Finally, repeat all of the above.
+
+
+    Now, since the "b" element is at the end of the array, the current algorithm will ensure that at least `n-2` songs are played after the song "b", before it's queued again in the player, `n` being the length of the `playlist` array. This guarantees to queue 14 unique tracks, in a playlist of 15 songs. To hear the 15th, you MUST get through at least one repeating track. Additionally, if we were to pick between 3 items at random, it would give us `n-3` songs and so on.
+
+
+    Since these radio stations are roughly 1 hour in total duration, this gives the listener about 55 minutes of playtime before they hear something they've already heard. The beauty of this algorithm is how perfectly it fits this use-case. When a listener is finished, they won't stick around after 1 hour, because they have just now heard all these songs. They will leave and hopefully come back in a day or so. After this amount of time, due to the probabilistic nature of this algorithm, the playlist order will look nothing like what they heard a day ago. To demonstrate, let's go through a few iterations of this change together. 
+    ```
+    [a, b, c, d, e, f]  //heads (we pick the first element)     
+    [b, c, d ,e, f, a]  //tails (we pick the second element)   
+    [b, d, e, f, a, c]  //tails                                 
+    [b, e, f, a, c, d]  //heads                                 
+    [e, f, a, c, d, b]  //heads                                 
+    [f, a, c, d, b, e]  //tails                                 
+    [f, c, d, b, e, a]  //heads                                 
+    [c, d, b, e, a, f]                                          
+    ```
+    As you can see, after a several iterations, the list looks nothing like the original. We have preserved the guarantee that a song should repeat as infrequently as possible, while adding inherent randomness to the process that will keep the listener guessing.
+
+    </Prose>
+</Root>
