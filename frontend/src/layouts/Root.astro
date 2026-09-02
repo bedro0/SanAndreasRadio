@@ -16,7 +16,7 @@ import { ClientRouter } from "astro:transitions";
     <ClientRouter />
   </head>
   <body class="text-foreground bg-background font-gothic">
-    <SiteHeader />
+    <SiteHeader client:load />
     <main class="my-16">
       <slot />
     </main>
