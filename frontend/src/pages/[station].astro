@@ -1,0 +1,16 @@
+---
+import allStations from "@/lib/allStations";
+import Root from "@/layouts/Root.astro";
+import Player from "@/components/Player";
+import metadata from "@/lib/gta-sa-radio-metadata.json" with { type: "json" };
+import type { RadioStations } from "@/lib/metadataTypes";
+export function getStaticPaths() {
+    return allStations.map((station) => ({ params: { station } }));
+}
+const { station } = Astro.params;
+const stationIdentity = metadata[station as keyof RadioStations].identity;
+---
+
+<Root>
+    <Player client:load stationIdentity={stationIdentity} />
+</Root>

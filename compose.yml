@@ -1,0 +1,30 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      args:
+        DEV_MODE: ${DEV_MODE}
+    ports:
+      - "8000:8000"
+    volumes:
+      - "${MUSIC_PATH}:/radiosa/music"
+    environment:
+      HOSTNAME: "localhost"
+      DISPLAY_ADMIN: "admin"
+      ADMIN_USER: "admin"
+      ENABLED_STATIONS: "bouncefm, csr, kdst, kjah, krose, mastersounds, playbackfm, radiols, radiox, sfur, wctr"
+      ICECAST_ADMIN_PASS: ""
+      ICECAST_RELAY_PASS: ""
+      ICECAST_SOURCE_PASS: ""
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        DEV_MODE: ${DEV_MODE}
+    ports:
+      - "4321:4321"
+    volumes:
+      - "${MUSIC_PATH}:/radiosa/music"
+    depends_on:
+      - backend

@@ -1,0 +1,24 @@
+---
+import "../styles/global.css";
+import { Font } from "astro:assets";
+import SiteHeader from "@/components/SiteHeader";
+import { ClientRouter } from "astro:transitions";
+---
+
+<html lang="en">
+  <head>
+    <Font cssVariable="--font-science-gothic" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="/assets/favicon.webp" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>GTA:SA Radio</title>
+    <ClientRouter />
+  </head>
+  <body class="text-foreground bg-background font-gothic">
+    <SiteHeader client:load />
+    <main class="my-16">
+      <slot />
+    </main>
+  </body>
+</html>
