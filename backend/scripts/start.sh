@@ -31,6 +31,9 @@ run_as_radiosa "node /radiosa/scripts/write-enabled-stations-array.mjs"
 # This launches Icecast using the custom config
 icecast2 -c /radiosa/config/icecast.xml &
 echo "Icecast launched successfully"
+
+run_as_radiosa "node /radiosa/scripts/now-playing-server.mjs" &
+echo "Now-playing HTTP server launched successfully"
 echo The following stations are enabled: $ENABLED_STATIONS.
 
 IFS=', ' read -r -a ENABLED_STATIONS_ARRAY <<< "$ENABLED_STATIONS"
