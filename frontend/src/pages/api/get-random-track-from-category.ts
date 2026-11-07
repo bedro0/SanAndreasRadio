@@ -22,7 +22,6 @@ export async function GET({ url }: APIContext) {
         categories.add("Songs (Outro)")
     }
     if (!category || !categories.has(category)) {
-        console.log(category)
         return Response.json({ message: "Please make sure the category exists in the specified station." }, { status: 400 })
     }
     const randomTrack = await getRandomTrackFromCategory(stationContent, category).then(file => file.path).catch();
