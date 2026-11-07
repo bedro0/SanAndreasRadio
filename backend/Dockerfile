@@ -4,10 +4,17 @@ COPY ["config/", "/radiosa/config"]
 COPY ["scripts/", "/radiosa/scripts"]
 WORKDIR /radiosa
 RUN chmod -R u+rwx /radiosa
+# mpd (and possibly icecast2) create their system users via a systemd-sysusers
+# trigger on Debian trixie+; that trigger is a no-op in this systemd-less slim
+# image, so the accounts never materialize. Create them ourselves if missing.
 RUN apt update && apt install -y --no-install-recommends \
     icecast2 \
     mpd \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && getent group icecast >/dev/null || groupadd --system icecast \
+    && getent passwd icecast2 >/dev/null || useradd --system --no-create-home --home-dir /var/empty --shell /usr/sbin/nologin --gid icecast icecast2 \
+    && getent group mpd >/dev/null || groupadd --system mpd \
+    && getent passwd mpd >/dev/null || useradd --system --no-create-home --home-dir /var/lib/mpd --shell /usr/sbin/nologin --gid mpd mpd
 
 RUN npm install \
     chance \
