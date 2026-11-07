@@ -36,7 +36,7 @@ function URLs() {
       { label: "about", link: "/about" },
       {
         label: "github",
-        link: "https://github.com/bedro0/RadioSanAndreas",
+        link: "https://github.com/bedro0/SanAndreasRadio",
       },
     ].map(({ label, link }, index) => (
       <a className="text-xl lg:text-3xl" key={index} href={link}>
