@@ -2,8 +2,8 @@ services:
   backend:
     build:
       context: ./backend
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
     volumes:
       - "${MUSIC_PATH}:/radiosa/music:ro"
     environment:
