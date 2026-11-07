@@ -25,7 +25,6 @@ export ICECAST_SOURCE_PASS=$ICECAST_SOURCE_PASS
 
 cd /radiosa/scripts
 
-run_as_radiosa "node /radiosa/scripts/write-enabled-stations-array.mjs"
 /radiosa/scripts/update-icecast-config.sh
 
 # This launches Icecast using the custom config

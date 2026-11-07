@@ -8,7 +8,10 @@ ICECAST_CONFIG="$SCRIPT_DIR/../config/icecast.xml"
 PASS_JSON="$SCRIPT_DIR/pass.json"
 
 generate_password() {
-    tr -dc 'A-Z0-9' < /dev/urandom | head -c 16
+    # head closes the pipe once it has 16 bytes, which SIGPIPEs tr while it's
+    # still reading /dev/urandom; under pipefail that nonzero status would
+    # otherwise kill the script via set -e.
+    tr -dc 'A-Z0-9' < /dev/urandom | head -c 16 || true
 }
 
 # Escapes a value for safe use as a sed replacement (delimiter is "|").
