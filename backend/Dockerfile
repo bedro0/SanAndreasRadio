@@ -1,23 +1,17 @@
-FROM node:26-slim
+FROM node:26-slim AS base
 
 COPY ["config/", "/radiosa/config"]
 COPY ["scripts/", "/radiosa/scripts"]
 WORKDIR /radiosa
 RUN chmod -R u+rwx /radiosa
-RUN apt update
-RUN apt install -y \
+RUN apt update && apt install -y --no-install-recommends \
     icecast2 \
-    mpd
+    mpd \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN npm install \
     chance \
     mpc-js
-
-ARG DEV_MODE="false"
-
-RUN if [ "$DEV_MODE" = "true" ]; then \
-    apt install -y vim mpc tmux; \
-    fi
 
 # Default Environmental Variables
 ENV HOSTNAME="localhost"
@@ -27,3 +21,15 @@ ENV ENABLED_STATIONS="bouncefm, csr, kdst, kjah, krose, mastersounds, playbackfm
 
 ENTRYPOINT ["/radiosa/scripts/start.sh"]
 # ENTRYPOINT [ "tail", "-f", "/dev/null" ]
+
+# Dev image: adds interactive shell tooling for debugging inside the
+# container. Only built via `docker compose -f compose.yml -f
+# compose.dev.yml ...` (which sets build.target: dev) — it is never the
+# default build target, so these tools never ship in the production image.
+FROM base AS dev
+RUN apt update && apt install -y --no-install-recommends vim mpc tmux \
+    && rm -rf /var/lib/apt/lists/*
+
+# Production image: the default build target (last stage, used whenever
+# --target is not passed) — what compose.yml builds.
+FROM base AS prod
