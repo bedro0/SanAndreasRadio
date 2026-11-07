@@ -13,6 +13,14 @@ RUN npm install \
     chance \
     mpc-js
 
+# Unprivileged account that runs the Node helper scripts and long-running
+# Node processes, instead of them running as root for the container's life.
+# Icecast and MPD keep dropping to their own packaged users (icecast2, mpd)
+# via their own config, so this account only needs mpd's group to reach the
+# per-station control sockets under /radiosa/socks.
+RUN adduser --system --no-create-home --group radiosa \
+    && usermod -aG mpd radiosa
+
 # Default Environmental Variables
 ENV HOSTNAME="localhost"
 ENV DISPLAY_ADMIN="admin"
