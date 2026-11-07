@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-background: #000000;
+    --color-foreground: #accbf1;
+    --font-gothic: var(--font-science-gothic)
+}

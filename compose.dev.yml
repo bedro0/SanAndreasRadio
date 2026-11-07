@@ -1,0 +1,13 @@
+# Dev overlay: builds the `dev` stage of each Dockerfile instead of the
+# default `prod` stage, so interactive shell tooling (vim, tmux, mpc) and
+# the live Astro dev server are only ever present in local development.
+#
+# Usage: docker compose -f compose.yml -f compose.dev.yml up --build
+services:
+  backend:
+    build:
+      target: dev
+
+  frontend:
+    build:
+      target: dev
