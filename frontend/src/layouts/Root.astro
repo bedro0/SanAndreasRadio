@@ -3,6 +3,12 @@ import "../styles/global.css";
 import { Font } from "astro:assets";
 import SiteHeader from "@/components/SiteHeader";
 import { ClientRouter } from "astro:transitions";
+
+interface Props {
+  title?: string;
+}
+
+const { title = "GTA:SA Radio" } = Astro.props;
 ---
 
 <html lang="en">
@@ -12,7 +18,7 @@ import { ClientRouter } from "astro:transitions";
     <link rel="icon" href="/assets/favicon.webp" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>GTA:SA Radio</title>
+    <title>{title}</title>
     <ClientRouter />
   </head>
   <body class="text-foreground bg-background font-gothic">

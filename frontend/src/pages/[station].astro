@@ -12,6 +12,6 @@ const { station } = Astro.params;
 const stationIdentity = metadata[station as keyof RadioStations].identity;
 ---
 
-<Root>
+<Root title={`${stationIdentity.stationName} | GTA:SA Radio`}>
     <Player client:load stationIdentity={stationIdentity} />
 </Root>
