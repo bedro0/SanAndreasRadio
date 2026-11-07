@@ -14,13 +14,15 @@ export default function RadioSelector() {
     >
         {
             allStations.map((station) => (
-                <button
+                <a
+                    href={`/${station}`}
                     onMouseEnter={() => {
                         playEffect(effectMenuHover, parseInt(localStorage.getItem("volume")!) / 32)
                     }}
                     key={station}
                     className="w-48 sm:w-64 aspect-square rounded-full p-8 hover:cursor-pointer hover:bg-gray-900"
-                    onClick={() => {
+                    onClick={(e) => {
+                        e.preventDefault()
                         playMenu(effectMenuSelect)
                         navigate(`/${station}`);
                     }}
@@ -29,7 +31,7 @@ export default function RadioSelector() {
                         className="aspect-square"
                         src={`/assets/logos/${station}.webp`}
                     />
-                </button>
+                </a>
             ))
         }
     </div>
