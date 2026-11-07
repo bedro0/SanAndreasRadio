@@ -1,5 +1,5 @@
 import sanAndreasLogo from "@/assets/san_andreas_logo.webp";
-import { GlobalUserCounter } from "./UserCounter";
+import { UserCounter } from "./UserCounter";
 export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
@@ -11,7 +11,9 @@ export default function SiteHeader() {
           <HomePage />
           <div className="flex flex-col items-end">
             <URLs />
-            <GlobalUserCounter />
+            <UserCounter
+              label={(count) => `${count} TOTAL USER${count === 1 ? "" : "S"}`}
+            />
           </div>
         </nav>
       </div>
@@ -20,26 +22,26 @@ export default function SiteHeader() {
 }
 
 
-function HomePage(){
+function HomePage() {
   return <div>
-            <a href="/">
-              <img src={sanAndreasLogo.src} alt="home" className="w-32 sm:w-48" />
-            </a>
-          </div>
+    <a href="/">
+      <img src={sanAndreasLogo.src} alt="home" className="w-32 sm:w-48" />
+    </a>
+  </div>
 }
 
-function URLs(){
+function URLs() {
   return <div className="flex gap-8">
-            {[
-              { label: "about", link: "/about" },
-              {
-                label: "github",
-                link: "https://github.com/bedro0/RadioSanAndreas",
-              },
-            ].map(({ label, link }, index) => (
-              <a className="text-xl lg:text-3xl" key={index} href={link}>
-                {label.toUpperCase()}
-              </a>
-            ))}
-          </div>
+    {[
+      { label: "about", link: "/about" },
+      {
+        label: "github",
+        link: "https://github.com/bedro0/RadioSanAndreas",
+      },
+    ].map(({ label, link }, index) => (
+      <a className="text-xl lg:text-3xl" key={index} href={link}>
+        {label.toUpperCase()}
+      </a>
+    ))}
+  </div>
 }

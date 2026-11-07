@@ -1,22 +1,23 @@
 import type { APIRoute } from "astro";
-import { activeClients, broadcastUserCount} from "@/lib/userCount";
+import { addClient, removeClient, broadcastUserCount } from "@/lib/userCount";
 
 export const prerender = false;
 
-export const GET: APIRoute = async ()=>{
+export const GET: APIRoute = async ({ url }) => {
+    const station = url.searchParams.get("station") ?? "global";
     let currentController: ReadableStreamDefaultController;
 
     const stream = new ReadableStream({
         start(controller) {
             currentController = controller;
-            activeClients.add(controller);
+            addClient(station, controller);
 
-            broadcastUserCount();
+            broadcastUserCount(station);
         },
         cancel(){
             if(currentController){
-                activeClients.delete(currentController);
-                broadcastUserCount();
+                removeClient(station, currentController);
+                broadcastUserCount(station);
             }
         }
     });
@@ -29,5 +30,5 @@ export const GET: APIRoute = async ()=>{
         }
     })
 
-    
+
 }
