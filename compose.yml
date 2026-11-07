@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - "${MUSIC_PATH}:/radiosa/music"
+      - "${MUSIC_PATH}:/radiosa/music:ro"
     environment:
       HOSTNAME: "localhost"
       DISPLAY_ADMIN: "admin"
@@ -21,6 +21,6 @@ services:
     ports:
       - "4321:4321"
     volumes:
-      - "${MUSIC_PATH}:/radiosa/music"
+      - "${MUSIC_PATH}:/radiosa/music:ro"
     depends_on:
       - backend
