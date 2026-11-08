@@ -12,19 +12,22 @@ Prerequisite: you need the station audio exported from the game.
 
 ## Running it
 
-This is a two-service [Docker Compose](https://docs.docker.com/compose/) setup: `backend` (Icecast + MPD + Node control scripts) and `frontend` (the Astro/React site).
+This is a two-service [Docker Compose](https://docs.docker.com/compose/) setup: `backend` (Icecast + MPD + Node control scripts) and `frontend` (the Astro/React site). Ready-made images for both are published to GHCR on every push to `main`, so you don't need to build anything locally.
 
 1. Clone the repo.
 2. Create a `.env` file in the repo root pointing at the folder of exported audio (`MUSIC_PATH=/path/to/exported/audio`).
-3. Start everything:
+3. Pull the latest images and start everything:
 
    ```sh
-   docker compose up --build
+   docker compose pull
+   docker compose up -d
    ```
 
 4. Go to `http://localhost:4321`.
 
 The backend's Icecast port is not published to the host — the frontend proxies audio (`/api/radio`) and now-playing metadata (`/api/now-playing`) to it over the internal Compose network, so port 4321 is the only thing you need exposed.
+
+If you'd rather build the images yourself (e.g. to test local changes to `backend/` or `frontend/`), run `docker compose up --build` instead — Compose will build from source and use that image in place of the pulled one.
 
 ### Dev mode
 

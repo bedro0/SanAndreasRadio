@@ -1,5 +1,6 @@
 services:
   backend:
+    image: ghcr.io/bedro0/sar-backend:latest
     build:
       context: ./backend
     expose:
@@ -16,6 +17,7 @@ services:
       ICECAST_SOURCE_PASS: ""
 
   frontend:
+    image: ghcr.io/bedro0/sar-frontend:latest
     build:
       context: ./frontend
     ports:
