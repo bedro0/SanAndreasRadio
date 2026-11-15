@@ -2,13 +2,58 @@
 
 This repo lets you listen to the in-game radio stations from Grand Theft Auto: San Andreas over the web, in real life. A backend container drives Icecast/MPD per-station streams, and an Astro + React frontend serves the player UI, proxying audio and metadata through to the backend.
 
-Prerequisite: you need the station audio exported from the game.
+## Prerequisite: export the station audio
 
-1. Download [San Andreas Audio Toolkit](https://github.com/bedro0/Project-gRadio/raw/main/San%20Andreas%20Audio%20Toolkit.7z).
-2. Extract the archive and open SaatGuiFrontend.exe inside the folder named Alci_s_SAAT_GUI_FrontEnd_1.0.
-3. Click File ==> Set Working Directory, to choose the folder where all the Audio files will be exported.
-4. Click File ==> Set GTA Directory, and choose the folder with original GTA San Andreas installed.
-5. To export radio tracks, simply double click the labels under the tab labeled "Archiv". The files are simply going to appear in the working directory. This project now supports all channels from the game.
+You need the station audio exported from the game with the [San Andreas Audio Toolkit (SAAT)](https://github.com/bedro0/San-Andreas-Audio-Toolkit), using its `-r` (metadata) export mode and the `metadata-full.ini` file that ships with it. The output folder will contain one subfolder per station (`Adverts`, `Bounce FM`, `CSR`, `K-DST`, `K-JAH`, `KROSE`, `Master Sounds`, `Playback FM`, `Radio Los Santos`, `Radio X`, `SFUR`, `WCTR`) with descriptively named `.ogg` files. Use that folder as `MUSIC_PATH` below.
+
+Don't use the plain `-e` export: it names files `Track_001.ogg` etc., which the backend won't find. See SAAT's [MANUAL.txt](https://github.com/bedro0/San-Andreas-Audio-Toolkit/blob/main/MANUAL.txt) for full usage.
+
+### Windows
+
+1. Download SAAT (clone it, or use Code ==> Download ZIP and extract it).
+2. Open a Command Prompt and `cd` into the toolkit folder (the one containing `saat_stream.exe` and `metadata-full.ini`).
+3. Run the export. Adjust `GTA` to your GTA San Andreas install folder and the last-but-one argument to where you want the audio:
+
+   ```bat
+   set GTA=C:\Program Files\Rockstar Games\GTA San Andreas
+   saat_stream.exe -r "%GTA%\audio\streams\ADVERTS" "%GTA%\audio\streams\CH" "%GTA%\audio\streams\CO" "%GTA%\audio\streams\CR" "%GTA%\audio\streams\DS" "%GTA%\audio\streams\HC" "%GTA%\audio\streams\MH" "%GTA%\audio\streams\MR" "%GTA%\audio\streams\NJ" "%GTA%\audio\streams\RE" "%GTA%\audio\streams\RG" "%GTA%\audio\streams\TK" C:\SanAndreasRadio\music metadata-full.ini
+   ```
+
+### Linux (and other POSIX systems)
+
+You can either use the prebuilt x86-64 binary or build SAAT from source.
+
+**Prebuilt binary (x86-64 Linux):** download `saat-linux-x86_64.tar.gz` from the [v1.10-linux release](https://github.com/bedro0/San-Andreas-Audio-Toolkit/releases/tag/v1.10-linux) and extract it. It contains `saat_stream`, `saat_sfx` and `metadata-full.ini`:
+
+```sh
+mkdir saat && tar -xzf saat-linux-x86_64.tar.gz -C saat
+cd saat
+```
+
+The binaries link dynamically against libogg, libvorbis and libsndfile, so install those if they're missing (on Debian/Ubuntu: `sudo apt install libogg0 libvorbis0a libsndfile1`). It's built on a current Ubuntu, so on older distros build from source instead.
+
+**Build from source:** the POSIX fixes live on the `linux-build` branch (`main` is the unmodified original release and won't build correctly on Linux). You need `make`, a C/C++ compiler, and the libogg, libvorbis and libsndfile development headers:
+
+```sh
+sudo apt install build-essential libogg-dev libvorbis-dev libsndfile1-dev   # Debian/Ubuntu
+# sudo dnf install gcc-c++ make libogg-devel libvorbis-devel libsndfile-devel  # Fedora
+# sudo pacman -S base-devel libogg libvorbis libsndfile                        # Arch
+
+git clone -b linux-build https://github.com/bedro0/San-Andreas-Audio-Toolkit.git
+cd San-Andreas-Audio-Toolkit
+make -C src PLATFORM=posix
+cp src/saat_stream src/saat_sfx .
+```
+
+**Run the export** from the folder containing `saat_stream` and `metadata-full.ini`. Set `GTA` to your GTA San Andreas install folder (for example, a Steam/Proton install or a copy of the game's files) and the last-but-one argument to where you want the audio:
+
+```sh
+GTA="$HOME/path/to/GTA San Andreas"
+mkdir -p ~/SanAndreasRadio/music
+./saat_stream -r "$GTA"/audio/streams/{ADVERTS,CH,CO,CR,DS,HC,MH,MR,NJ,RE,RG,TK} ~/SanAndreasRadio/music metadata-full.ini
+```
+
+Linux file names are case-sensitive, so check that the stream files under `audio/streams` match the upper-case names above.
 
 ## Running it
 
